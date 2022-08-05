@@ -1,0 +1,41 @@
+using System;
+
+namespace NewSolution
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int restDays = int.Parse(Console.ReadLine());
+
+            double workPlay = 63;
+            double restPlay = 127;
+            double days = 365;
+            double timeForPlayAllYear = 30000;
+
+            double minutesForPlay = restDays * restPlay;
+            double workDaysMinutesPlay = days - restDays;
+            double workDaysMinutesPlayInMinutes = workDaysMinutesPlay * workPlay;
+
+            double realTimeForPlay = workDaysMinutesPlay * workPlay + restDays * restPlay;
+
+            if (timeForPlayAllYear > realTimeForPlay)
+            {
+                double sumPlay = timeForPlayAllYear - realTimeForPlay;
+                double sumPlayHours = sumPlay / 60;
+                double sumPlayMinutes = sumPlay % 60;
+                Console.WriteLine("Tom sleeps well");
+                Console.WriteLine($"{Math.Floor(sumPlayHours)} hours and {sumPlayMinutes} minutes less for play");
+            }
+            else if (timeForPlayAllYear < realTimeForPlay)
+            {
+                double difference = realTimeForPlay - timeForPlayAllYear;
+                double restHours = difference / 60;
+                double restMinutes = difference % 60;
+                Console.WriteLine("Tom will run away");
+                Console.WriteLine($"{Math.Floor(restHours)} hours and {restMinutes} minutes more for play");
+            }
+        }
+    
+    }
+}
